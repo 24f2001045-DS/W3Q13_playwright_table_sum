@@ -1,0 +1,25 @@
+name: DataDash QA Automation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install Dependencies
+        run: |
+          uv sync
+          uv run playwright install --with-deps
+
+      - name: Run Playwright Scraper - 24f2001045@ds.study.iitm.ac.in
+        run: uv run python scrape.py
