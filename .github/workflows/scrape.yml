@@ -3,7 +3,7 @@ name: DataDash QA Automation
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   scrape:
